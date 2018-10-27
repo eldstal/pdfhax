@@ -14,6 +14,8 @@ pdfectomy: pdfectomy.cpp
 
 run: pdfjsdump pdfjsinject
 	./pdfjsinject -i empty.pdf -o empty_inj.pdf js/alert.js
+	echo "empty_inj.pdf should run your JS on load now"
+	# also generate an uncompressed variant, for debugging
 	podofouncompress empty_inj.pdf empty_inj_unc.pdf
 	#mkdir -p dumped
 	#./pdfjsdump -o dumped BouncingButton.pdf
