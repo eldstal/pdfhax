@@ -1,23 +1,19 @@
 
 BOOST=-lboost_program_options -lboost_filesystem -lboost_system 
 
-all: pdfjsdump pdfjsinject pdfectomy
+all: bin/pdfjsdump bin/pdfjsinject bin/pdfectomy
 
-pdfjsdump: pdfjsdump.cpp
+bin/%: %.cpp
+	mkdir -p bin
 	g++ -lpodofo $(BOOST) -o $@ $<
 
-pdfjsinject: pdfjsinject.cpp
-	g++ -lpodofo $(BOOST) -o $@ $<
-
-pdfectomy: pdfectomy.cpp
-	g++ -lpodofo $(BOOST) -o $@ $<
-
-run: pdfjsdump pdfjsinject
-	./pdfjsinject -i empty.pdf -o empty_inj.pdf js/alert.js
-	echo "empty_inj.pdf should run your JS on load now"
+run: bin/pdfjsdump bin/pdfjsinject
+	mkdir -p generated
+	./bin/pdfjsinject -i samples/empty.pdf -o generated/empty_inj.pdf js/alert.js
+	echo "generated/empty_inj.pdf should run your JS on load now"
 	# also generate an uncompressed variant, for debugging
-	podofouncompress empty_inj.pdf empty_inj_unc.pdf
+	podofouncompress generated/empty_inj.pdf generated/empty_inj_unc.pdf
 	#mkdir -p dumped
-	#./pdfjsdump -o dumped BouncingButton.pdf
+	#./bin/pdfjsdump -o dumped/ samples/BouncingButton.pdf
 	#ls dumped/
 

@@ -1,7 +1,6 @@
 dumped/
-pdfjsdump
-pdfjsinject
-pdfectomy
+generated/
+bin/
 
 empty_inj.pdf
 empty_inj_unc.pdf
