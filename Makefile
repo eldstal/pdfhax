@@ -9,10 +9,10 @@ bin/%: %.cpp
 
 run: bin/pdfjsdump bin/pdfjsinject
 	mkdir -p generated
-	./bin/pdfjsinject -i samples/empty.pdf -o generated/empty_inj.pdf js/alert.js
-	echo "generated/empty_inj.pdf should run your JS on load now"
+	./bin/pdfjsinject -i samples/latex.pdf -o generated/latex_inj.pdf js/alert.js
+	echo "generated/latex_inj.pdf should run your JS on load now"
 	# also generate an uncompressed variant, for debugging
-	podofouncompress generated/empty_inj.pdf generated/empty_inj_unc.pdf
+	podofouncompress generated/latex_inj.pdf generated/latex_inj_unc.pdf
 	#mkdir -p dumped
 	#./bin/pdfjsdump -o dumped/ samples/BouncingButton.pdf
 	#ls dumped/
