@@ -5,7 +5,7 @@ all: bin/pdfjsdump bin/pdfjsinject bin/pdfectomy
 
 bin/%: %.cpp
 	mkdir -p bin
-	g++ -lpodofo $(BOOST) -o $@ $<
+	g++ -std=c++11 -o $@ $< -lpodofo $(BOOST)
 
 run: bin/pdfjsdump bin/pdfjsinject
 	mkdir -p generated
