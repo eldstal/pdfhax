@@ -117,8 +117,8 @@ void add_objects_to_xref(PdfVecObjects& doc_objs, vector<PdfReference> scripts) 
   }
 
 
-  PdfObject* root = get_or_create_dict_obj(doc_objs, xref, KEY_ROOT);
-  PdfObject* names = get_or_create_dict_obj(doc_objs, root, KEY_NAMES);
+  PdfObject* catalog = get_or_create_dict_obj(doc_objs, xref, KEY_ROOT);
+  PdfObject* names = get_or_create_dict_obj(doc_objs, catalog, KEY_NAMES);
   PdfObject* javascript = get_or_create_dict_obj(doc_objs, names, NAME_JAVASCRIPT);
   //PdfObject* ap = get_or_create_dict_obj(doc_objs, names, KEY_AP);
 
