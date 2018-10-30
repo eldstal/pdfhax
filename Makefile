@@ -11,6 +11,7 @@ bin/%: %.cpp
 	g++ -std=c++11 -o $@ $< -lpodofo $(BOOST)
 
 generated/%_unc.pdf: samples/%.pdf
+	mkdir -p generated
 	podofouncompress $^ $@
 
 run: bin/pdfjsdump bin/pdfjsinject
@@ -23,3 +24,6 @@ run: bin/pdfjsdump bin/pdfjsinject
 	#./bin/pdfjsdump -o dumped/ samples/BouncingButton.pdf
 	#ls dumped/
 
+clean:
+	-rm bin/*
+	-rm generated/*.pdf
